@@ -26,7 +26,7 @@ public class CustomerService {
 		Customer customerToSave = customerMapper.toModel(customerDTO);
 
 		Customer savedCustomer = customerRepository.save(customerToSave);
-		return createMessageResponse(savedCustomer.getId(), "Created room with ID  ");
+		return createMessageResponse(savedCustomer.getId(), "Created customer with ID  ");
 	}
 
 	public List<CustomerDTO> listAll() {
@@ -52,7 +52,7 @@ public class CustomerService {
 		Customer customerToUpdate = customerMapper.toModel(customerDTO);
 
 		Customer updatedCustomer = customerRepository.save(customerToUpdate);
-		return createMessageResponse(updatedCustomer.getId(), "Updated room with ID ");
+		return createMessageResponse(updatedCustomer.getId(), "Updated customer with ID ");
 	}
 
 	private Customer verifyIfExists(Long id) throws CustomerNotFoundException {

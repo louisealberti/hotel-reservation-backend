@@ -24,7 +24,7 @@ import br.edu.utfpr.hotel.service.RoomService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/room")
+@RequestMapping("/api/room/")
 public class RoomController {
 
 	private RoomService roomService;

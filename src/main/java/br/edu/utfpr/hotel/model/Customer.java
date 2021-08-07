@@ -1,7 +1,5 @@
 package br.edu.utfpr.hotel.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,8 +30,8 @@ public class Customer {
 	@Column(nullable = false)
 	private String email;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	private List<Phone> phones;
+	@Column
+	private String phone;
 
 	@Column(nullable = false)
 	private String address;
@@ -45,25 +42,24 @@ public class Customer {
 	@Column(nullable = true)
 	private double bill;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	private Room room;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+//	private Room room;
 
 	public Customer() {
 
 	}
 
-	public Customer(Long id, String firstName, String lastName, String cpf, String email,
-			List<Phone> phones, String address, String password) {
+	public Customer(Long id, String firstName, String lastName, String cpf, String email, String phone, String address,
+			String password, double bill) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.cpf = cpf;
 		this.email = email;
-		this.phones = phones;
+		this.phone = phone;
 		this.address = address;
 		this.password = password;
-		this.bill = 0.00;
-		this.room = null;
+		this.bill = bill;
 	}
 
 	public Long getId() {
@@ -106,12 +102,12 @@ public class Customer {
 		this.email = email;
 	}
 
-	public List<Phone> getPhones() {
-		return phones;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPhones(List<Phone> phones) {
-		this.phones = phones;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getAddress() {
@@ -136,14 +132,6 @@ public class Customer {
 
 	public void setBill(double bill) {
 		this.bill = bill;
-	}
-
-	public Room getRoom() {
-		return room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
 	}
 
 }

@@ -4,18 +4,10 @@ public class MessageResponseDTO {
 
 	private final String message;
 
-	/**
-	 * Constructor for MessageResponseDTO
-	 *
-	 * @param messageResponseDTOBuilder
-	 */
 	private MessageResponseDTO(String message) {
 		this.message = message;
 	}
 
-	/**
-	 * @return the message
-	 */
 	public String getMessage() {
 		return message;
 	}

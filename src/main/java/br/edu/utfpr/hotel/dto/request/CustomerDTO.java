@@ -1,16 +1,9 @@
 package br.edu.utfpr.hotel.dto.request;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
-
-import br.edu.utfpr.hotel.model.Phone;
-import br.edu.utfpr.hotel.model.Room;
 
 public class CustomerDTO {
 
@@ -31,9 +24,8 @@ public class CustomerDTO {
 	@NotEmpty
 	private String email;
 
-	@Valid
 	@NotEmpty
-	private List<Phone> phones;
+	private String phone;
 
 	@NotEmpty
 	private String address;
@@ -44,26 +36,23 @@ public class CustomerDTO {
 
 	private double bill;
 
-	private Room room;
-
 	public CustomerDTO() {
 
 	}
 
 	public CustomerDTO(Long id, @NotEmpty @Size(min = 2, max = 50) String firstName,
 			@NotEmpty @Size(min = 2, max = 50) String lastName, @NotEmpty @CPF String cpf, @NotEmpty String email,
-			@Valid @NotEmpty List<Phone> phones, @NotEmpty String address,
-			@NotEmpty @Size(min = 8, max = 64) String password) {
+			@NotEmpty String phone, @NotEmpty String address, @NotEmpty @Size(min = 8, max = 64) String password,
+			double bill) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.cpf = cpf;
 		this.email = email;
-		this.phones = phones;
+		this.phone = phone;
 		this.address = address;
 		this.password = password;
-		this.bill = 0.00;
-		this.room = null;
+		this.bill = bill;
 	}
 
 	public Long getId() {
@@ -106,12 +95,12 @@ public class CustomerDTO {
 		this.email = email;
 	}
 
-	public List<Phone> getPhones() {
-		return phones;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPhones(List<Phone> phones) {
-		this.phones = phones;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getAddress() {
@@ -137,13 +126,4 @@ public class CustomerDTO {
 	public void setBill(double bill) {
 		this.bill = bill;
 	}
-
-	public Room getRoom() {
-		return room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-
 }

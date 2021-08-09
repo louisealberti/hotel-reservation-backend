@@ -48,7 +48,7 @@ public class CustomerController {
 	@PutMapping("/{id}")
 	public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid CustomerDTO customerDTO)
 			throws CustomerNotFoundException {
-		return customerService.updateById(id, customerDTO);
+		return customerService.updateById(customerDTO);
 	}
 
 	@DeleteMapping("/{id}")

@@ -48,7 +48,7 @@ public class RoomController {
 	@PutMapping("/{id}")
 	public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid RoomDTO roomDTO)
 			throws RoomNotFoundException {
-		return roomService.updateById(id, roomDTO);
+		return roomService.updateById(roomDTO);
 	}
 
 	@DeleteMapping("/{id}")

@@ -49,7 +49,7 @@ public class ManagerController {
 	@PutMapping("/{id}")
 	public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid ManagerDTO managerDTO)
 			throws ManagerNotFoundException {
-		return managerService.updateById(id, managerDTO);
+		return managerService.updateById(managerDTO);
 	}
 
 	@DeleteMapping("/{id}")

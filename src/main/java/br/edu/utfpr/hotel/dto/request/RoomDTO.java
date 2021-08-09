@@ -1,35 +1,33 @@
 package br.edu.utfpr.hotel.dto.request;
 
-import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
-import br.edu.utfpr.hotel.model.Customer;
+import javax.validation.constraints.NotEmpty;
 
 public class RoomDTO {
 
 	private Long id;
 
-	@NotEmpty
 	private int number;
 
 	@NotEmpty
 	private String type;
 
-	@NotEmpty
-	private boolean available;
+	private LocalDate arrival;
 
-	private Customer customer;
+	private LocalDate departure;
 
 	public RoomDTO() {
 
 	}
 
-	public RoomDTO(Long id, @NotEmpty int number, @NotEmpty String type, @NotEmpty boolean available,
-			Customer customer) {
+	public RoomDTO(Long id, int number, @NotEmpty String type, LocalDate arrival,
+			LocalDate departure) {
 		this.id = id;
 		this.number = number;
 		this.type = type;
-		this.available = available;
-		this.customer = customer;
+		this.arrival = arrival;
+		this.departure = departure;
 	}
 
 	public Long getId() {
@@ -56,20 +54,20 @@ public class RoomDTO {
 		this.type = type;
 	}
 
-	public boolean isAvailable() {
-		return available;
+	public LocalDate getArrival() {
+		return arrival;
 	}
 
-	public void setAvailable(boolean available) {
-		this.available = available;
+	public void setArrival(LocalDate arrival) {
+		this.arrival = arrival;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public LocalDate getDeparture() {
+		return departure;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setDeparture(LocalDate departure) {
+		this.departure = departure;
 	}
 
 }

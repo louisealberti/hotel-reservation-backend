@@ -39,18 +39,15 @@ public class Customer {
 	@Column(nullable = false)
 	private String password;
 
-	@Column(nullable = true)
-	private double bill;
-
-//	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-//	private Room room;
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+	private Room room;
 
 	public Customer() {
 
 	}
 
 	public Customer(Long id, String firstName, String lastName, String cpf, String email, String phone, String address,
-			String password, double bill) {
+			String password, Room room) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -59,7 +56,7 @@ public class Customer {
 		this.phone = phone;
 		this.address = address;
 		this.password = password;
-		this.bill = bill;
+		this.room = room;
 	}
 
 	public Long getId() {
@@ -126,12 +123,12 @@ public class Customer {
 		this.password = password;
 	}
 
-	public double getBill() {
-		return bill;
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setBill(double bill) {
-		this.bill = bill;
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
 }

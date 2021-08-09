@@ -46,8 +46,8 @@ public class CustomerService {
 		customerRepository.deleteById(id);
 	}
 
-	public MessageResponseDTO updateById(Long id, CustomerDTO customerDTO) throws CustomerNotFoundException {
-		verifyIfExists(id);
+	public MessageResponseDTO updateById(CustomerDTO customerDTO) throws CustomerNotFoundException {
+		verifyIfExists(customerDTO.getId());
 
 		Customer customerToUpdate = customerMapper.toModel(customerDTO);
 

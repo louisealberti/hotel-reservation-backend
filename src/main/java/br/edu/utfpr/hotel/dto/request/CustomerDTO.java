@@ -5,6 +5,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.edu.utfpr.hotel.model.Room;
+
 public class CustomerDTO {
 
 	private Long id;
@@ -22,28 +24,32 @@ public class CustomerDTO {
 	private String cpf;
 
 	@NotEmpty
+	@Size(min = 7, max = 30)
 	private String email;
 
 	@NotEmpty
+	@Size(min = 13, max = 20)
 	private String phone;
 
 	@NotEmpty
+	@Size(min = 10, max = 50)
 	private String address;
 
 	@NotEmpty
 	@Size(min = 8, max = 64)
 	private String password;
 
-	private double bill;
+	private Room room;
 
 	public CustomerDTO() {
 
 	}
 
 	public CustomerDTO(Long id, @NotEmpty @Size(min = 2, max = 50) String firstName,
-			@NotEmpty @Size(min = 2, max = 50) String lastName, @NotEmpty @CPF String cpf, @NotEmpty String email,
-			@NotEmpty String phone, @NotEmpty String address, @NotEmpty @Size(min = 8, max = 64) String password,
-			double bill) {
+			@NotEmpty @Size(min = 2, max = 50) String lastName, @NotEmpty @CPF String cpf,
+			@NotEmpty @Size(min = 7, max = 30) String email, @NotEmpty @Size(min = 13, max = 20) String phone,
+			@NotEmpty @Size(min = 10, max = 50) String address, @NotEmpty @Size(min = 8, max = 64) String password,
+			Room room) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -52,7 +58,7 @@ public class CustomerDTO {
 		this.phone = phone;
 		this.address = address;
 		this.password = password;
-		this.bill = bill;
+		this.room = room;
 	}
 
 	public Long getId() {
@@ -119,11 +125,12 @@ public class CustomerDTO {
 		this.password = password;
 	}
 
-	public double getBill() {
-		return bill;
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setBill(double bill) {
-		this.bill = bill;
+	public void setRoom(Room room) {
+		this.room = room;
 	}
+
 }

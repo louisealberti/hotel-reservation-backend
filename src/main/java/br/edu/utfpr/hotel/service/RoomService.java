@@ -45,8 +45,8 @@ public class RoomService {
 		roomRepository.deleteById(id);
 	}
 
-	public MessageResponseDTO updateById(Long id, RoomDTO roomDTO) throws RoomNotFoundException {
-		verifyIfExists(id);
+	public MessageResponseDTO updateById(RoomDTO roomDTO) throws RoomNotFoundException {
+		verifyIfExists(roomDTO.getId());
 
 		Room roomToUpdate = roomMapper.toModel(roomDTO);
 

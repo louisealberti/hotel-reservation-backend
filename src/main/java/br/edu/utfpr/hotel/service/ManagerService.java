@@ -46,8 +46,8 @@ public class ManagerService {
 		managerRepository.deleteById(id);
 	}
 
-	public MessageResponseDTO updateById(Long id, ManagerDTO managerDTO) throws ManagerNotFoundException {
-		verifyIfExists(id);
+	public MessageResponseDTO updateById(ManagerDTO managerDTO) throws ManagerNotFoundException {
+		verifyIfExists(managerDTO.getId());
 
 		Manager managerToUpdate = managerMapper.toModel(managerDTO);
 

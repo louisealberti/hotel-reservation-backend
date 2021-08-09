@@ -1,13 +1,13 @@
 package br.edu.utfpr.hotel.model;
 
-import javax.persistence.CascadeType;
+import java.time.LocalDate;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,21 +25,21 @@ public class Room {
 	private String type;
 
 	@Column
-	private boolean available;
+	private LocalDate arrival;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	private Customer customer;
+	@Column
+	private LocalDate departure;
 
 	public Room() {
 
 	}
 
-	public Room(Long id, int number, String type, boolean available, Customer customer) {
+	public Room(Long id, int number, String type, LocalDate arrival, LocalDate departure) {
 		this.id = id;
 		this.number = number;
 		this.type = type;
-		this.available = available;
-		this.customer = customer;
+		this.arrival = arrival;
+		this.departure = departure;
 	}
 
 	public Long getId() {
@@ -66,20 +66,20 @@ public class Room {
 		this.type = type;
 	}
 
-	public boolean isAvailable() {
-		return available;
+	public LocalDate getArrival() {
+		return arrival;
 	}
 
-	public void setAvailable(boolean available) {
-		this.available = available;
+	public void setArrival(LocalDate arrival) {
+		this.arrival = arrival;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public LocalDate getDeparture() {
+		return departure;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setDeparture(LocalDate departure) {
+		this.departure = departure;
 	}
 
 }
